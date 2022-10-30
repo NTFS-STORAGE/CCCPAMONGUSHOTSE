@@ -1,8 +1,13 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MsorkyScripts/OpenSourceAntiCheat/main/AntiCheatBypass.txt"))()
+
+_G.Toggles = "V" -- You can put any keybind
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
+wait(3)
 getgenv().Settings = {
     ['Made By JoJo#2494'] = {
         OWNER = "flashbandit6661465", --/ Stand owner username.
         STANDS = {"ACCID_4DoPBA", "PJSDahood12", "STAND USER", "STAND USER", "STAND USER"}, --/ List of your stand accounts (if you have more than one you can add more usernames to the table).
-        FPS = 12, --/ Will control FPS can improve the overall performance on both instances when set to lower.
+        FPS = 15, --/ Will control FPS can improve the overall performance on both instances when set to lower.
         PERFORMANCE = true, --/ If set to true it'll significantly improve your overall FPS if you're struggling with performance.
         NOCLIP = {SynapseX = false, Offset = -3.05}, --/ Offset will control the height of normal noclip (keep unchanged unless you're using titan with a big character / SynapseX option).
         FACELESS = false, --/ If you want to remove your face.
@@ -11,13 +16,13 @@ getgenv().Settings = {
         ANTIFLING = true, --/ If set to true you can't get flinged nor can you fling anyone.
         TELEPORTMAIN = true, --/ Teleports to the stand user
         RANGE = 50, --/ Controls the melee reach range (50 is max).
-        TITAN = {ENABLED = false, DEFAULT = false, TALL = true, WIDE = true, GODV2 = true}, --/ If enabled you will become a titan stand, if you enable god you need to execute before load for it to work (also can be used with titan disabled).
-        FOLLOWANIM = {true, ID = 3541044388, SPEED = 0.25}, --/ If set to true will play the desired animation when moving (Default animation is heavily advised), SPEED will control the speed (Recommended is 0.25).
+        TITAN = {ENABLED = false, DEFAULT = false, TALL = true, WIDE = false, GODV2 = false}, --/ If enabled you will become a titan stand, if you enable god you need to execute before load for it to work (also can be used with titan disabled).
+        FOLLOWANIM = {true, ID = 3541044388, SPEED = 10}, --/ If set to true will play the desired animation when moving (Default animation is heavily advised), SPEED will control the speed (Recommended is 0.25).
         AUTOPICKUPCASH = true, --/ If set to true will automatically pick up cash when you're near it & should not be used if your dropping cash.
     }
 }
 
-wait(3)
+wait(2)
 
 
 --//--------------------------------------------------------------------------------------------\\--
