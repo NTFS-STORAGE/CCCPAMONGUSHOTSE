@@ -6,7 +6,7 @@ wait(3)
 getgenv().Settings = {
     ['Made By JoJo#2494'] = {
         OWNER = "kaaswork", --/ Stand owner username.
-        STANDS = {"ACCID_4DoPBA", "PJSDahood12", "STAND USER", "STAND USER", "STAND USER"}, --/ List of your stand accounts (if you have more than one you can add more usernames to the table).
+        STANDS = {"ACCID_4DoPBA", "PJSDahood12", "DIFw425U4IehV", "STAND USER", "STAND USER"}, --/ List of your stand accounts (if you have more than one you can add more usernames to the table).
         FPS = 16, --/ Will control FPS can improve the overall performance on both instances when set to lower.
         PERFORMANCE = true, --/ If set to true it'll significantly improve your overall FPS if you're struggling with performance.
         NOCLIP = {SynapseX = false, Offset = -3.05}, --/ Offset will control the height of normal noclip (keep unchanged unless you're using titan with a big character / SynapseX option).
@@ -14,7 +14,7 @@ getgenv().Settings = {
         TRAILS = true, --/ If you want to remove the white trail when charge attacking.
         LEGS = false, --/ If set to true it'll remove your legs.
         ANTIFLING = true, --/ If set to true you can't get flinged nor can you fling anyone.
-        TELEPORTMAIN = true, --/ Teleports to the stand user
+        TELEPORTMAIN = false, --/ Teleports to the stand user
         RANGE = 50, --/ Controls the melee reach range (50 is max).
         TITAN = {ENABLED = false, DEFAULT = false, TALL = true, WIDE = false, GODV2 = false}, --/ If enabled you will become a titan stand, if you enable god you need to execute before load for it to work (also can be used with titan disabled).
         FOLLOWANIM = {true, ID = 3541044388, SPEED = 5}, --/ If set to true will play the desired animation when moving (Default animation is heavily advised), SPEED will control the speed (Recommended is 0.25).
@@ -1179,46 +1179,15 @@ Create("!song4", function() Stand.Action = "Summoned" Play(8088721155, false) en
 Create("!song5", function() Stand.Action = "Summoned" Play(8703175543, false) end)
 --/---------------------------------------------------------------------------------------------\--/ Command Commands :
 Create("!commands", function() Chat("-~-~-~- ( Stand Function ) -~-~-~-") end)
-Create("!commands", function() wait(3) Chat("!summon -- Summons stand") end)
-Create("!commands", function() wait(6) Chat("/e summon -- Summons stand (Silent)") end)
-Create("!commands", function() wait(9) Chat("!rejoin -- Makes the stand rejoin") end)
-Create("!commands", function() wait(12) Chat("!leave -- Makes stand leave game") end)
-Create("!commands", function() wait(15) Chat("test -- Tests command to see if executed right") end)
-Create("!commands", function() wait(18) Chat("!reset -- Resets stand (Use if stand is buggy)") end)
-Create("!commands", function() wait(21) Chat("!crew -- Makes stand join owners crew") end)
-Create("!commands", function() wait(24) Chat("!uncrew -- Makes stand leave owners crew") end)
-Create("!commands", function() wait(27) Chat("-~-~-~- ( Misc Commands ) -~-~-~-") end)
-Create("!commands", function() wait(30) Chat("!drop -- Starts dropping cash") end)
-Create("!commands", function() wait(33) Chat("!wallet -- Equips stand wallet") end)
-Create("!commands", function() wait(36) Chat("!save -- Grabs owner if knocked") end)
-Create("!commands", function() wait(39) Chat("!ghost -- Makes stand invisible") end)
-Create("!commands", function() wait(42) Chat("/e ghost -- Makes stand invisible (Silent)") end)
-Create("!commands", function() wait(45) Chat("!unghost -- Disables ghost command") end)
-Create("!commands", function() wait(48) Chat("!freeze -- Freeze stand in place") end)
-Create("!commands", function() wait(51) Chat("!left -- Moves to left position") end)
-Create("!commands", function() wait(54) Chat("!right -- Moves to right position") end)
-Create("!commands", function() wait(57) Chat("!ad -- Chats script credits / ad") end)
-Create("!commands", function() wait(60) Chat("!tp bank -- Brings owner to bank") end)
-Create("!commands", function() wait(63) Chat("!tp casino -- Brings owner to casino") end)
-Create("!commands", function() wait(66) Chat("!tp guns -- Brings owner to guns") end)
-Create("!commands", function() wait(69) Chat("!tp admin -- Brings owner to AB") end)
-Create("!commands", function() wait(72) Chat("!tp uphill -- Brings owner to uphill") end)
-Create("!commands", function() wait(75) Chat("!tp downhill -- Brings owner to downhill") end)
-Create("!commands", function() wait(78) Chat("!tp school -- Brings owner to school") end)
-Create("!commands", function() wait(81) Chat("!tp sewer -- Brings owner to sewer") end)
-Create("!commands", function() wait(84) Chat("-~-~-~- ( Kill / Target Commands ) -~-~-~-") end)
-Create("!commands", function()  wait(87) Chat("!mimic -- Mimics punch / blocks") end)
-Create("!commands", function()  wait(90) Chat("!lmimic -- Mimics punch / blocks (Light punch)") end)
-Create("!commands", function()  wait(66) Chat("!aura --  Kills anyone nearby") end)
-Create("!commands", function()  wait(93) Chat("!laura -- Kills anyone nearby (Light punch)") end)
-Create("!commands", function()  wait(96) Chat("!sneak -- Hides under owner and rapid punch") end)
-Create("!commands", function()  wait(99) Chat("!barrage -- Rapid punch infront of owner") end)
-Create("!commands", function()  wait(102) Chat("!punch -- Punchs then hides") end)
-Create("!commands", function()  wait(105) Chat("!multi -- Teleports around owner and punch") end)
-Create("!commands", function() wait(108) Chat("!kill -- Auto kills target and stomps") end)
-Create("!commands", function() wait(111) Chat("!knock -- Auto knocks target") end)
-Create("!commands", function() wait(114) Chat("!trap -- Brings target to sewer") end)
-Create("!commands", function() wait(117) Chat("!jail -- Brings target to jail") end)
-Create("!commands", function() wait(120) Chat("!void -- Brings target to void") end)
-Create("!commands", function() wait(123) Chat("!bring -- Brings target to owner") end)
-Create("!commands", function() wait(126) Chat("Disable commands by using !summon") end)
+Create("!commands", function() wait(1) Chat("!left -- Moves to left position") end)
+Create("!commands", function() wait(4) Chat("!right -- Moves to right position") end)
+Create("!commands", function() wait(6) Chat("!tp bank -- Brings owner to bank") end)
+Create("!commands", function() wait(9) Chat("!tp casino -- Brings owner to casino") end)
+Create("!commands", function() wait(13) Chat("!tp guns -- Brings owner to guns") end)
+Create("!commands", function() wait(16) Chat("!tp admin -- Brings owner to AB") end)
+Create("!commands", function() wait(18) Chat("-~-~-~- ( Kill / Target Commands ) -~-~-~-") end)
+Create("!commands", function()  wait(27) Chat("!laura -- Kills anyone nearby (Light punch)") end)
+Create("!commands", function()  wait(30) Chat("!sneak -- Hides under owner and rapid punch") end)
+Create("!commands", function()  wait(34) Chat("!barrage -- Rapid punch infront of owner") end)
+Create("!commands", function() wait(38) Chat("!bring -- Brings target to owner") end)
+Create("!commands", function() wait(43) Chat("Disable commands by using !summon") end)
