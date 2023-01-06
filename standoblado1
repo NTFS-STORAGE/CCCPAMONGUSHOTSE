@@ -278,11 +278,7 @@ if Settings['Made By JoJo#2494'].TRAILS then
     end)()
 end
 --//------------------------------------------------------------------------------------------\\--
-repeat
-    rs.Stepped:Wait()
-    STAND.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Ignored.Shop["[Pumpkin Mask] - $62"].Head.Position)
-    fireclickdetector(game:GetService("Workspace").Ignored.Shop["[Pumpkin Mask] - $62"].ClickDetector)
-until STAND.Backpack:FindFirstChild("Mask")
+
 --//------------------------------------------------------------------------------------------\\-- 
 if Settings['Made By JoJo#2494'].TELEPORTMAIN then
     pcall(function()
