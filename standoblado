@@ -1,30 +1,5 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MsorkyScripts/OpenSourceAntiCheat/main/AntiCheatBypass.txt"))()
 
-_G.Toggles = "V" -- You can put any keybind
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
-wait(3)
-getgenv().Settings = {
-    ['Made By JoJo#2494'] = {
-        OWNER = "kaaswork", --/ Stand owner username.
-        STANDS = {"ACCID_4DoPBA", "PJSDahood12", "DIFw425U4IehV", "STAND USER", "STAND USER"}, --/ List of your stand accounts (if you have more than one you can add more usernames to the table).
-        FPS = 16, --/ Will control FPS can improve the overall performance on both instances when set to lower.
-        PERFORMANCE = true, --/ If set to true it'll significantly improve your overall FPS if you're struggling with performance.
-        NOCLIP = {SynapseX = false, Offset = -3.05}, --/ Offset will control the height of normal noclip (keep unchanged unless you're using titan with a big character / SynapseX option).
-        FACELESS = false, --/ If you want to remove your face.
-        TRAILS = true, --/ If you want to remove the white trail when charge attacking.
-        LEGS = false, --/ If set to true it'll remove your legs.
-        ANTIFLING = true, --/ If set to true you can't get flinged nor can you fling anyone.
-        TELEPORTMAIN = false, --/ Teleports to the stand user
-        RANGE = 50, --/ Controls the melee reach range (50 is max).
-        TITAN = {ENABLED = false, DEFAULT = false, TALL = true, WIDE = false, GODV2 = false}, --/ If enabled you will become a titan stand, if you enable god you need to execute before load for it to work (also can be used with titan disabled).
-        FOLLOWANIM = {true, ID = 3541044388, SPEED = 5}, --/ If set to true will play the desired animation when moving (Default animation is heavily advised), SPEED will control the speed (Recommended is 0.25).
-        AUTOPICKUPCASH = true, --/ If set to true will automatically pick up cash when you're near it & should not be used if your dropping cash.
-    }
-}
-
-wait(2)
-
-
 --//--------------------------------------------------------------------------------------------\\--
 --// Stand Creator 1.1.2 \\--
 if not game['Loaded'] or not game:GetService("Players").LocalPlayer then 
@@ -116,7 +91,7 @@ if tonumber(Settings['Made By JoJo#2494'].FPS) then
 end
 --//------------------------------------------------------------------------------------------\\-
 if Settings['Made By JoJo#2494'].PERFORMANCE then
-    game:GetService("RunService"):Set3dRenderingEnabled(true)
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
     local g = game
     local w = g.Workspace
     local l = g:GetService"Lighting"
@@ -372,7 +347,7 @@ if Settings['Made By JoJo#2494'].FOLLOWANIM then
     OWNER.Character:WaitForChild("Humanoid"):GetPropertyChangedSignal("MoveDirection"):Connect(Moved)
 end
 --//------------------------------------------------------------------------------------------\\--
-Notify("NTFS Jojo+AltControl Loaded!")
+Notify("Jojo's Stand Framework 1.1.2","Success!")
 end
 --//------------------------------------------------------------------------------------------\\----//------------------------------------------------------------------------------------------\\--
 if not STAND.Character:FindFirstChild("ForceField_TESTING") then
@@ -1056,7 +1031,7 @@ CreateAction("Punch", function() if STAND.Character.HumanoidRootPart then if OWN
 CreateAction("MimicLight", function() local Block = OWNER.Character.BodyEffects:FindFirstChild('Block') if OWNER.Character.BodyEffects.Attacking.Value == true then STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-6) if STAND.Character:FindFirstChild('Combat') then STAND.Character:FindFirstChild('Combat'):Activate() Hit(false) else STAND.Backpack:FindFirstChild('Combat').Parent = STAND.Character end elseif Block then STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-6) if not STAND.Character.BodyEffects:FindFirstChild('Block') then game:GetService("ReplicatedStorage").MainEvent:FireServer("Block", true) end else if STAND.Character.BodyEffects:FindFirstChild('Block') then STAND.Character.BodyEffects:FindFirstChild('Block'):Destroy() end STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame * CFrame.new(1,1.85,2.5) end end)
 CreateAction("DefenseMode", function() Stand.Action = "" Chat("Defense Mode enabled!") wait(0.6) repeat wait() if OWNER.Character.Humanoid.Health > 50 and OWNER.Character.BodyEffects["K.O"].Value == false then Chat("I like full hp guys ;)") wait(0.3) elseif OWNER.Character.Humanoid.Health <= 50 or OWNER.Character.BodyEffects["K.O"].Value == true then wait(0.5) if STAND.Character.HumanoidRootPart then if OWNER.Character.HumanoidRootPart then STAND.Character:FindFirstChild("Combat") STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,0.85,-4.85) wait(0.4) Hit(false) Chat("ORA") task.wait(0.3) Chat("ORA") task.wait(0.3) Chat("ORA") else STAND.Backpack:FindFirstChild("Combat").Parent = STAND STAND.Character:FindFirstChild("Combat"):Activate() STAND.Character:FindFirstChild("Combat"):Deactivate() end end end until Stand.Action == "Summoned" or OWNER.Character.Humanoid.Health  > 30 Stand.Action = "Summoned" end)
 CreateAction("Crew", function() local CurrentCrew = STAND:WaitForChild('DataFolder').Information.Crew local CurrentOwnerCrew = OWNER:WaitForChild('DataFolder').Information.Crew if CurrentCrew.Value == CurrentOwnerCrew.Value then Stand.Action = "Summoned" else Crew(true,CurrentOwnerCrew.Value) end end)
-CreateAction("CrewTarget", function() local CurrentCrew = STAND:WaitForChild('DataFolder').Information.Crew local CurrentOwnerCrew = OWNER:WaitForChild('DataFolder').Information.Crew local CurrentTargetCrew = Target:WaitForChild('DataFolder').Information.Crew if CurrentCrew.Value == CurrentTargetCrew.Value then Crew(false) else Crew(true,CurrentOwnerCrew.Value) end end)
+CreateAction("CrewTarget", function() local CurrentCrew = STAND:WaitForChild('DataFolder').Information.Crew local CurrentOwnerCrew = OWNER:WaitForChild('DataFolder').Information.Crew local CurrentTargetCrew = Target:WaitForChild('DataFolder').Information.Crew if CurrentOwnerCrew.Value == CurrentTargetCrew.Value then Crew(false) else Crew(true,CurrentOwnerCrew.Value) end end)
 CreateAction("LowGFX", function() local decalsyeeted = true local g = game local w = g.Workspace local l = g.Lighting local t = w.Terrain t.WaterWaveSize = 0 t.WaterWaveSpeed = 0 t.WaterReflectance = 0 t.WaterTransparency = 0 l.GlobalShadows = false l.FogEnd = 9e9 l.Brightness = 0 settings().Rendering.QualityLevel = "Level01" for i, v in pairs(g:GetDescendants()) do if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then v.Material = "Plastic" v.Reflectance = 0 elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then v.Transparency = 1 elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then v.Lifetime = NumberRange.new(0) elseif v:IsA("Explosion") then v.BlastPressure = 1 v.BlastRadius = 1 elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then v.Enabled = false elseif v:IsA("MeshPart") then v.Material = "Plastic" v.Reflectance = 0 v.TextureID = 10385902758728957 end end for i, e in pairs(l:GetChildren()) do if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then e.Enabled = false end end end)
 CreateAction("DropBank", function() MoveTo(-459.06475830078125, 39.0381965637207, -285.0455627441406) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
 CreateAction("DropGuns", function() MoveTo(-871.926, -31.3909, -525.411) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
@@ -1066,21 +1041,21 @@ CreateAction("DropVoid", function() MoveTo(0,-6,0) wait(0.5) game:GetService("Vi
 CreateAction("DropJail", function() MoveTo(-294.9903869628906, 22.215801239013672, -67.0307846069336) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)--/---------------------------------------------------------------------------------------------\--/ Commands :
 CreateAction("DropTrap", function() MoveTo(-800.586, -38.0927, -886.867) wait(0.5) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
 --/---------------------------------------------------------------------------------------------\--/ Commands :
-Create("!summon", function() Equip("Combat") Chat(" *head explodes* Hello Guys!") Play(8004825017, true) AnimPlay(2788838708,1) Stand.Action = "Summoned" end)
+Create("!summon", function() Equip("Combat") Chat("I am waiting for your commands master!") Play(8004825017, true) AnimPlay(2788838708,1) Stand.Action = "Summoned" end)
 Create("!summon", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!summon", function() wait(2) local CurrentCrew = STAND:WaitForChild('DataFolder').Information.Crew local CurrentOwnerCrew = OWNER:WaitForChild('DataFolder').Information.Crew if CurrentCrew.Value == CurrentOwnerCrew.Value then Stand.Action = "Summoned" else Crew(true,CurrentOwnerCrew.Value) end end)
-Create("/e su", function() Equip("Combat") Chat("I am waiting for your commands master!") Play(8004825017, true) Stand.Action = "Summoned" end)
-Create("/e su", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("/e summon", function() Equip("Combat") Chat("I am waiting for your commands master!") Play(8004825017, true) Stand.Action = "Summoned" end)
+Create("/e summon", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!crew", function() Play(8655611378, true) Chat("Joined owners crew!") local CurrentCrew = STAND:WaitForChild('DataFolder').Information.Crew local CurrentOwnerCrew = OWNER:WaitForChild('DataFolder').Information.Crew if CurrentCrew.Value == CurrentOwnerCrew.Value then Stand.Action = "Summoned" else Crew(true,CurrentOwnerCrew.Value) end end)
 Create("!uncrew", function() Play(8655611378, true) Chat("Left owners crew!") Crew(false) end)
 Create("!ad", function() Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "Summoned" Chat("! matters# 0001 for script") end)
 Create("!ad", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!freeze", function()Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "Freeze" Chat("I shall stay put, master.") Play(6696048331, true) end)
 Create("!freeze", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("!r", function()Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "Summoned" Chat("I will be back.") wait(1) Stand.Action = "Rejoin" end) 
-Create("!r", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("!cd", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Auto-drop enabled!") Stand.Action = "Drop" end) 
-Create("!cd", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!rejoin", function()Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "Summoned" Chat("I will be back.") wait(1) Stand.Action = "Rejoin" end) 
+Create("!rejoin", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!cashdrop", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Auto-drop enabled!") Stand.Action = "Drop" end) 
+Create("!cashdrop", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!save", function () Stand.Action = "Crew" Play(8655611378, true) Equip("Combat") Stand.Action = "Save" if OWNER.Character.BodyEffects["K.O"].Value == true then Chat("I wont let you die!") elseif OWNER.Character.BodyEffects["K.O"].Value == false then Chat("You are not knocked!") end end) 
 Create("!save", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("test", function() Equip("Combat") Chat("working") end)
@@ -1092,14 +1067,14 @@ Create("!mimic", function() Stand.Action = "Crew" Play(8655611378, true)  Stand.
 Create("!mimic", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!lmimic", function() Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Light Mimic enabled!") Play(6196192169, true) wait(0.9) Stand.Action = "MimicLight" end)
 Create("!lmimic", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("!pp", function() Stand.Action = "Crew" Play(8655611378, true)Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Aura enabled!") Play(6678126154, false) wait(0.9) Stand.Action = "Aura" end)
-Create("!pp", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!aura", function() Stand.Action = "Crew" Play(8655611378, true)Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Aura enabled!") Play(6678126154, false) wait(0.9) Stand.Action = "Aura" end)
+Create("!aura", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!laura", function() Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Light Aura enabled!") Play(6678126154, false) wait(0.9) Stand.Action = "AuraLight" end)
 Create("!laura", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("/e gpp", function() Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Ghost enabled!") wait(0.9) Stand.Action = "Ghost" end)
-Create("/e gpp", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) wait(3) end)
-Create("!goaway", function() Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("It seems my time here is done... :(") wait(0.9) Stand.Action = "Ghost" end)
-Create("!goaway", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) wait(3) end)
+Create("/e ghost", function() Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Ghost enabled!") wait(0.9) Stand.Action = "Ghost" end)
+Create("/e ghost", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) wait(3) end)
+Create("!ghost", function() Stand.Action = "Crew" Play(8655611378, true) Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Ghost enabled!") wait(0.9) Stand.Action = "Ghost" end)
+Create("!ghost", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) wait(3) end)
 Create("!leave", function() Stand.Action = "Crew" Play(8655611378, true) Chat("It seems my time here is done.") wait(2) game:Shutdown() end)
 Create("!leave", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!barrage", function() Stand.Action = "Crew" Stand.Action = "" Stand.Action = "Summoned" Equip("Combat") Chat("Barrage enabled!") Play(6678126154, false) wait(0.9) Stand.Action = "Barrage" end)
@@ -1120,10 +1095,10 @@ Create("!tp guns", function() Play(8655611378, true) if OWNER.Character.BodyEffe
 Create("!tp guns", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!tp admin", function() Play(8655611378, true) if OWNER.Character.BodyEffects["K.O"].Value == false then Crew(false) Equip("Combat") Chat("Bringing to AB!") Stand.Action = "AdminTP" elseif OWNER.Character.BodyEffects["K.O"].Value == true then Stand.Action = "Summoned" wait(0.5) Chat("TP commands won't work when knocked!") end end)
 Create("!tp admin", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("!tp ude", function() Play(8655611378, true) if OWNER.Character.BodyEffects["K.O"].Value == false then Crew(false) Equip("Combat") Chat("Bringing to uphill!") Stand.Action = "UphillTP" elseif OWNER.Character.BodyEffects["K.O"].Value == true then Stand.Action = "Summoned" wait(0.5) Chat("TP commands won't work when knocked!") end end)
-Create("!tp ude", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("!tp da", function() Play(8655611378, true) if OWNER.Character.BodyEffects["K.O"].Value == false then Crew(false) Equip("Combat") Chat("Bringing to downhill!") Stand.Action = "DownhillTP" elseif OWNER.Character.BodyEffects["K.O"].Value == true then Stand.Action = "Summoned" wait(0.5) Chat("TP commands won't work when knocked!") end end)
-Create("!tp da", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!tp uphill", function() Play(8655611378, true) if OWNER.Character.BodyEffects["K.O"].Value == false then Crew(false) Equip("Combat") Chat("Bringing to uphill!") Stand.Action = "UphillTP" elseif OWNER.Character.BodyEffects["K.O"].Value == true then Stand.Action = "Summoned" wait(0.5) Chat("TP commands won't work when knocked!") end end)
+Create("!tp uphill", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!tp downhill", function() Play(8655611378, true) if OWNER.Character.BodyEffects["K.O"].Value == false then Crew(false) Equip("Combat") Chat("Bringing to downhill!") Stand.Action = "DownhillTP" elseif OWNER.Character.BodyEffects["K.O"].Value == true then Stand.Action = "Summoned" wait(0.5) Chat("TP commands won't work when knocked!") end end)
+Create("!tp downhill", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!tp sewer", function() Play(8655611378, true) if OWNER.Character.BodyEffects["K.O"].Value == false then Crew(false) Equip("Combat") Chat("Bringing to sewer!") Stand.Action = "SewerTP" elseif OWNER.Character.BodyEffects["K.O"].Value == true then Stand.Action = "Summoned" wait(0.5) Chat("TP commands won't work when knocked!") end end)
 Create("!tp sewer", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!tp school", function() Play(8655611378, true) if OWNER.Character.BodyEffects["K.O"].Value == false then Crew(false) Equip("Combat") Chat("Bringing to school!") Stand.Action = "SchoolTP" elseif OWNER.Character.BodyEffects["K.O"].Value == true then Stand.Action = "Summoned" wait(0.5) Chat("TP commands won't work when knocked!") end end)
@@ -1136,28 +1111,30 @@ Create("!ora", function() Play(8655611378, true) Chat("Ora!") Stand.Action = "Cr
 Create("!ora", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!stop", function() Play(8655611378, true) Chat("Stopped any loops!") StopLoop("III") Stop() Stand.Action = "Summoned" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) wait(3) end)
 Create("!stop", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.HumanoidRootPart.CFrame*CFrame.new(0,-0.7,1.45) wait(0.05) wait(3) end)
-Create("!drop", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Faster") wait(0.2) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
+Create("!drop", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(1) game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) wait(1) Stand.Action = "Summoned" end)
 Create("!drop", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!drop bank", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropBank" end)
 Create("!drop bank", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("!drop pe", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropGuns" end)
-Create("!drop pe", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-Create("!drop oojj", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropCasino" end)
-Create("!drop oojj", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!drop guns", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropGuns" end)
+Create("!drop guns", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!drop casino", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropCasino" end)
+Create("!drop casino", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!drop admin", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropCasino" end)
 Create("!drop admin", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!drop jail", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropJail" end)
 Create("!drop jail", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 Create("!drop void", function() Stand.Action = "Crew" Play(8655611378, true) Chat("Dropping Target!") wait(2) Stand.Action = "DropVoid" end)
 Create("!drop void", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-CreateTargetAbility("!aidll", function() Play(8655611378, true) Stand.Action = "" Equip("Combat") Chat("Auto-Stomp target!") wait(1) local Target = Stand.Target Stand.Action = "CrewTarget" if Target then Stand.Action = "" game:GetService("RunService"):BindToRenderStep("TARGETKILL", -1 , function() if Target and Target.Character and Target.Character:FindFirstChild("BodyEffects") and Target.Character.BodyEffects:FindFirstChild("K.O") then if Target.Character.BodyEffects["K.O"].Value == true then STAND.Character.HumanoidRootPart.CFrame = CFrame.new(Target.Character.UpperTorso.Position.X , Target.Character.UpperTorso.Position.Y + 1, Target.Character.UpperTorso.Position.Z ) game:GetService("ReplicatedStorage").MainEvent:FireServer("Stomp") else STAND.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame*CFrame.new(0,-10,0) if STAND.Character:FindFirstChildWhichIsA("Tool") then Hit(true) else Equip("Combat") Hit(true) end end end end) end end)
-Create("!kmo", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+CreateTargetAbility("!kill", function() Play(8655611378, true) Stand.Action = "" Equip("Combat") Chat("Auto-Stomp target!") wait(1) local Target = Stand.Target Stand.Action = "CrewTarget" if Target then Stand.Action = "" game:GetService("RunService"):BindToRenderStep("TARGETKILL", -1 , function() if Target and Target.Character and Target.Character:FindFirstChild("BodyEffects") and Target.Character.BodyEffects:FindFirstChild("K.O") then if Target.Character.BodyEffects["K.O"].Value == true then STAND.Character.HumanoidRootPart.CFrame = CFrame.new(Target.Character.UpperTorso.Position.X , Target.Character.UpperTorso.Position.Y + 1, Target.Character.UpperTorso.Position.Z ) game:GetService("ReplicatedStorage").MainEvent:FireServer("Stomp") else STAND.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame*CFrame.new(0,-10,0) if STAND.Character:FindFirstChildWhichIsA("Tool") then Hit(true) else Equip("Combat") Hit(true) end end end end) end end)
+Create("!kill", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 CreateTargetAbility("!knock", function() Play(8655611378, true) Stand.Action = "" Equip("Combat") Chat("Auto-Knock target!") wait(1) local Target = Stand.Target Stand.Action = "CrewTarget" if Target then Stand.Action = "" game:GetService("RunService"):BindToRenderStep("TARGETKILL", -1 , function() if Target and Target.Character and Target.Character:FindFirstChild("BodyEffects") and Target.Character.BodyEffects:FindFirstChild("K.O") then if Target.Character.BodyEffects["K.O"].Value == true then STAND.Character.HumanoidRootPart.CFrame = CFrame.new(Target.Character.UpperTorso.Position.X , Target.Character.UpperTorso.Position.Y + 1, Target.Character.UpperTorso.Position.Z ) else STAND.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame*CFrame.new(0,-10,0) if STAND.Character:FindFirstChildWhichIsA("Tool") then Hit(true) else Equip("Combat") Hit(true) end end end end) end end)
-Create("!pppoopoo", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
-CreateTargetAbility("!bring", function() Play(8655611378, true) Stand.Action = "" Equip("Combat") Chat("Wait A Sec I Will Bring.") wait(3) local Target = Stand.Target Stand.Action = "CrewTarget" if Target then Stand.Action = "" game:GetService("RunService"):BindToRenderStep("GRAB", -1 , function() if Target and Target.Character and Target.Character:FindFirstChild("BodyEffects") and Target.Character.BodyEffects:FindFirstChild("K.O") then if Target.Character.BodyEffects["K.O"].Value == true then STAND.Character.HumanoidRootPart.CFrame = CFrame.new(Target.Character.UpperTorso.Position.X , Target.Character.UpperTorso.Position.Y + 1, Target.Character.UpperTorso.Position.Z ) if STAND.Character.BodyEffects["Grabbed"].Value == nil then game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) end end if Target.Character.BodyEffects["K.O"].Value == false then STAND.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame*CFrame.new(0,-6,0) if STAND.Character:FindFirstChildWhichIsA("Tool") then if Mode == false then Hit(false) else Hit(true) end wait(0.1) else Equip("Combat") if Mode == false then Hit(false) else Hit(true) end wait(0.1) end end if Target == nil or STAND.Character.BodyEffects["Grabbed"].Value ~= nil then game:GetService("RunService"):UnbindFromRenderStep("GRAB") Stand.Action = "Summoned" wait(0.5) Stand.Action = "Crew" wait(4) Stand.Action = "Summoned" end end end) end end)
+Create("!knock", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+CreateTargetAbility("!bring", function() Play(8655611378, true) Stand.Action = "" Equip("Combat") Chat("Bringing target!") wait(1) local Target = Stand.Target Stand.Action = "CrewTarget" if Target then Stand.Action = "" game:GetService("RunService"):BindToRenderStep("GRAB", -1 , function() if Target and Target.Character and Target.Character:FindFirstChild("BodyEffects") and Target.Character.BodyEffects:FindFirstChild("K.O") then if Target.Character.BodyEffects["K.O"].Value == true then STAND.Character.HumanoidRootPart.CFrame = CFrame.new(Target.Character.UpperTorso.Position.X , Target.Character.UpperTorso.Position.Y + 1, Target.Character.UpperTorso.Position.Z ) if STAND.Character.BodyEffects["Grabbed"].Value == nil then game:GetService("VirtualInputManager"):SendKeyEvent(true,"G",false,game) end end if Target.Character.BodyEffects["K.O"].Value == false then STAND.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame*CFrame.new(0,-6,0) if STAND.Character:FindFirstChildWhichIsA("Tool") then if Mode == false then Hit(false) else Hit(true) end wait(0.1) else Equip("Combat") if Mode == false then Hit(false) else Hit(true) end wait(0.1) end end if Target == nil or STAND.Character.BodyEffects["Grabbed"].Value ~= nil then game:GetService("RunService"):UnbindFromRenderStep("GRAB") Stand.Action = "Summoned" wait(0.5) Stand.Action = "Crew" wait(4) Stand.Action = "Summoned" end end end) end end)
 Create("!bring", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
 CreateTargetAbility("!goto", function() Play(8655611378, true) Stand.Action = "" Equip("Combat") Chat("Bringing to target!") wait(1) local Target = Stand.Target Stand.Action = "CrewTarget" repeat wait() if OWNER.Character.BodyEffects["K.O"].Value == false then Hit(true) STAND.Character.HumanoidRootPart.CFrame = OWNER.Character.UpperTorso.CFrame wait(2) STAND.Character.HumanoidRootPart.CFrame = CFrame.new(OWNER.Character.UpperTorso.Position.X , OWNER.Character.UpperTorso.Position.Y +0.5, OWNER.Character.UpperTorso.Position.Z ) wait(0.5) if STAND.Character.BodyEffects["Grabbed"].Value == nil and  OWNER.Character.BodyEffects["K.O"].Value == true then wait(1) STAND.Character.HumanoidRootPart.CFrame = CFrame.new(OWNER.Character.UpperTorso.Position.X , OWNER.Character.UpperTorso.Position.Y +0.5, OWNER.Character.UpperTorso.Position.Z ) wait(.5) if STAND.Character.BodyEffects["Grabbed"].Value == nil then wait(1) game:GetService("ReplicatedStorage").MainEvent:FireServer("Grabbing", false) end end end until Stand.Action == "Summoned" or Target == nil or not Target.Character.BodyEffects:FindFirstChild("K.O") or not Target.Character.BodyEffects:FindFirstChild("Defense") or STAND.Character.BodyEffects["Grabbed"].Value ~= nil if Target.Character.BodyEffects["K.O"].Value == false then STAND.Character.HumanoidRootPart.CFrame = Target.Character.UpperTorso.CFrame elseif Target.Character.BodyEffects["K.O"].Value == true then  wait(1) game:GetService("ReplicatedStorage").MainEvent:FireServer("Grabbing", false) wait(2) Stand.Action = "Crew" wait(4) Stand.Action = "Summoned" end end)
 Create("!goto", function() Stand.Action = "Crew" pcall(function() game:GetService("RunService"):UnbindFromRenderStep("TARGETKILL") game:GetService("RunService"):UnbindFromRenderStep("GRAB") end) end)
+Create("!disconnect", function() Chat("Re-Rolling owner as submitative.") end)
+Create("!forceconnect", function() Chat("Attempting to connect...") end)
 --/---------------------------------------------------------------------------------------------\--/ SFX Commands :
 Create("This suits me well!", function() Stand.Action = "Summoned" Play(6556672272, true) end)
 Create("Haha", function() Stand.Action = "Summoned" Play(9127270745, true) end)
@@ -1179,15 +1156,46 @@ Create("!song4", function() Stand.Action = "Summoned" Play(8088721155, false) en
 Create("!song5", function() Stand.Action = "Summoned" Play(8703175543, false) end)
 --/---------------------------------------------------------------------------------------------\--/ Command Commands :
 Create("!commands", function() Chat("-~-~-~- ( Stand Function ) -~-~-~-") end)
-Create("!commands", function() wait(1) Chat("!left -- Moves to left position") end)
-Create("!commands", function() wait(4) Chat("!right -- Moves to right position") end)
-Create("!commands", function() wait(6) Chat("!tp bank -- Brings owner to bank") end)
-Create("!commands", function() wait(9) Chat("!tp casino -- Brings owner to casino") end)
-Create("!commands", function() wait(13) Chat("!tp guns -- Brings owner to guns") end)
-Create("!commands", function() wait(16) Chat("!tp admin -- Brings owner to AB") end)
-Create("!commands", function() wait(18) Chat("-~-~-~- ( Kill / Target Commands ) -~-~-~-") end)
-Create("!commands", function()  wait(27) Chat("!laura -- Kills anyone nearby (Light punch)") end)
-Create("!commands", function()  wait(30) Chat("!sneak -- Hides under owner and rapid punch") end)
-Create("!commands", function()  wait(34) Chat("!barrage -- Rapid punch infront of owner") end)
-Create("!commands", function() wait(38) Chat("!bring -- Brings target to owner") end)
-Create("!commands", function() wait(43) Chat("Disable commands by using !summon") end)
+Create("!commands", function() wait(4) Chat("!summon -- Summons stand") end)
+Create("!commands", function() wait(8) Chat("/e summon -- Summons stand (Silent)") end)
+Create("!commands", function() wait(12) Chat("!rejoin -- Makes the stand rejoin") end)
+Create("!commands", function() wait(16) Chat("!leave -- Makes stand leave game") end)
+Create("!commands", function() wait(20) Chat("test -- Tests command to see if executed right") end)
+Create("!commands", function() wait(24) Chat("!reset -- Resets stand (Use if stand is buggy)") end)
+Create("!commands", function() wait(28) Chat("!crew -- Makes stand join owners crew") end)
+Create("!commands", function() wait(32) Chat("!uncrew -- Makes stand leave owners crew") end)
+Create("!commands", function() wait(36) Chat("-~-~-~- ( Misc Commands ) -~-~-~-") end)
+Create("!commands", function() wait(40) Chat("!cashdrop -- Starts dropping cash") end)
+Create("!commands", function() wait(44) Chat("!wallet -- Equips stand wallet") end)
+Create("!commands", function() wait(48) Chat("!save -- Grabs owner if knocked") end)
+Create("!commands", function() wait(52) Chat("!ghost -- Makes stand invisible") end)
+Create("!commands", function() wait(56) Chat("/e ghost -- Makes stand invisible (Silent)") end)
+Create("!commands", function() wait(60) Chat("!unghost -- Disables ghost command") end)
+Create("!commands", function() wait(62) Chat("!freeze -- Freeze stand in place") end)
+Create("!commands", function() wait(66) Chat("!left -- Moves to left position") end)
+Create("!commands", function() wait(70) Chat("!right -- Moves to right position") end)
+Create("!commands", function() wait(74) Chat("!ad -- Chats script credits / ad") end)
+Create("!commands", function() wait(78) Chat("!tp bank -- Brings owner to bank") end)
+Create("!commands", function() wait(82) Chat("!tp casino -- Brings owner to casino") end)
+Create("!commands", function() wait(86) Chat("!tp guns -- Brings owner to guns") end)
+Create("!commands", function() wait(90) Chat("!tp admin -- Brings owner to AB") end)
+Create("!commands", function() wait(92) Chat("!tp uphill -- Brings owner to uphill") end)
+Create("!commands", function() wait(96) Chat("!tp downhill -- Brings owner to downhill") end)
+Create("!commands", function() wait(100) Chat("!tp school -- Brings owner to school") end)
+Create("!commands", function() wait(104) Chat("!tp sewer -- Brings owner to sewer") end)
+Create("!commands", function() wait(108) Chat("-~-~-~- ( Kill / Target Commands ) -~-~-~-") end)
+Create("!commands", function()  wait(112) Chat("!mimic -- Mimics punch / blocks") end)
+Create("!commands", function()  wait(116) Chat("!lmimic -- Mimics punch / blocks (Light punch)") end)
+Create("!commands", function()  wait(120) Chat("!aura --  Kills anyone nearby") end)
+Create("!commands", function()  wait(124) Chat("!laura -- Kills anyone nearby (Light punch)") end)
+Create("!commands", function()  wait(128) Chat("!sneak -- Hides under owner and rapid punch") end)
+Create("!commands", function()  wait(132) Chat("!barrage -- Rapid punch infront of owner") end)
+Create("!commands", function()  wait(136) Chat("!punch -- Punchs then hides") end)
+Create("!commands", function()  wait(140) Chat("!multi -- Teleports around owner and punch") end)
+Create("!commands", function() wait(144) Chat("!kill -- Auto kills target and stomps") end)
+Create("!commands", function() wait(148) Chat("!bring -- Brings target to owner") end)
+Create("!commands", function() wait(152) Chat("!drop bank -- Drops target at bank") end)
+Create("!commands", function() wait(156) Chat("!drop admin -- Drops target at admin") end)
+Create("!commands", function() wait(160) Chat("!drop casino -- Drops target at void") end)
+Create("!commands", function() wait(164) Chat("!drop jail -- Drops target at jail") end)
+Create("!commands", function() wait(168) Chat("Disable commands by using !summon") end)
