@@ -346,13 +346,7 @@ end
 Notify("Jojo's Stand Framework 1.1.2","Success!")
 end
 --//------------------------------------------------------------------------------------------\\----//------------------------------------------------------------------------------------------\\--
-if not STAND.Character:FindFirstChild("ForceField_TESTING") then
-repeat wait() until STAND.Character:WaitForChild("BodyEffects"):WaitForChild("K.O").Value == false
-    STAND.Character.Humanoid.Health = 0
-    x()
-else
-    x()
-end
+
 --//------------------------------------------------------------------------------------------\\--
 STAND.Idled:connect(function()
     game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
